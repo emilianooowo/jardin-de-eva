@@ -1,0 +1,239 @@
+/* ── VARIABLES ── */
+.page {
+    --verde: rgb(194, 212, 158);
+    --morado: rgb(125, 101, 134);
+    --morado-dark: rgb(100, 78, 108);
+    --morado-soft: rgba(125, 101, 134, 0.08);
+    --text: rgb(60, 42, 68);
+    --text-muted: rgba(60, 42, 68, 0.55);
+    --border: rgba(125, 101, 134, 0.14);
+    --bg: #fdfbf7;
+    --white: #ffffff;
+    --radius: 16px;
+
+    min-height: 100vh;
+    background: var(--bg);
+    font-family: 'Jost', sans-serif;
+}
+
+/* ── HERO ── */
+.hero {
+    padding: 48px 24px 40px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.breadcrumbLink {
+    font-size: 0.8rem;
+    color: var(--morado);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s;
+}
+
+.breadcrumbLink:hover {
+    opacity: 0.7;
+}
+
+.breadcrumbSep {
+    font-size: 0.9rem;
+    color: var(--verde);
+    line-height: 1;
+    margin-top: 1px;
+}
+
+.breadcrumbCurrent {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+}
+
+/* título */
+.heroTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--morado);
+    line-height: 1.15;
+    margin: 0 0 10px;
+}
+
+.heroSub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ── CONTENIDO ── */
+.content {
+    padding: 0 24px 80px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* ── GRID: mapa + info ── */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* ── MAPA ── */
+.mapWrap {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    aspect-ratio: 3 / 4;
+    position: relative;
+    background: #e8e4f0;
+}
+
+.mapWrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* ── TARJETA INFO ── */
+.infoCard {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+/* ── ITEM DE CONTACTO ── */
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.2s ease;
+    position: relative;
+}
+
+a.contactItem:hover {
+    background: var(--morado-soft);
+}
+
+a.contactItem:hover .iconBox {
+    background: var(--verde);
+    color: var(--morado-dark);
+}
+
+a.contactItem:hover .arrow {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* icono */
+.iconBox {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--morado-soft);
+    color: var(--morado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.iconBox svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* texto */
+.contactText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.contactLabel {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+.contactValue {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* flecha */
+.arrow {
+    font-size: 1.1rem;
+    color: var(--morado);
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+/* divisor */
+.divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 20px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    .hero {
+        padding: 32px 20px 28px;
+    }
+
+    .heroTitle {
+        font-size: 1.8rem;
+    }
+
+    .content {
+        padding: 0 20px 60px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* en mobile el mapa va arriba en formato 16/9 */
+    .mapWrap {
+        aspect-ratio: 16 / 9;
+    }
+
+    .contactValue {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+    }
+
+    .arrow {
+        display: none;
+    }
+}

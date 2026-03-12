@@ -1,0 +1,473 @@
+/* ── VARIABLES ── */
+.page {
+  --verde:       rgb(194, 212, 158);
+  --morado:      rgb(125, 101, 134);
+  --morado-dark: rgb(100, 78, 108);
+  --morado-soft: rgba(125, 101, 134, 0.06);
+  --verde-soft:  rgba(194, 212, 158, 0.15);
+  --text:        rgb(50, 34, 58);
+  --text-muted:  rgba(50, 34, 58, 0.5);
+  --border:      rgba(125, 101, 134, 0.12);
+  --bg:          #fdfbf7;
+  --white:       #ffffff;
+
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: 'Jost', sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ════════════════════════
+   SCROLL REVEAL
+════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════
+   ANIMACIÓN FLOTANTE FLORES
+════════════════════════ */
+@keyframes float {
+  0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0px); }
+  50%       { transform: rotate(var(--rot, 0deg)) translateY(-14px); }
+}
+
+/* ════════════════════════
+   BREADCRUMB
+════════════════════════ */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.breadcrumbLink {
+  font-size: 0.8rem;
+  color: var(--morado);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s;
+}
+
+.breadcrumbLink:hover { opacity: 0.65; }
+
+.breadcrumbSep {
+  font-size: 0.9rem;
+  color: var(--verde);
+}
+
+.breadcrumbCurrent {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ════════════════════════
+   HERO
+════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 32px 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* capa de flores flotantes con parallax */
+.heroFlores {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.floatingFlor {
+  position: absolute;
+  animation: float var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+  color: var(--morado);
+  opacity: 0.18;
+  line-height: 1;
+}
+
+/* contenido hero */
+.heroInner {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding-top: 60px;
+  max-width: 560px;
+}
+
+.heroEyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin: 0 0 20px;
+}
+
+.heroTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 13vw, 8rem);
+  font-weight: 700;
+  color: var(--morado);
+  line-height: 0.9;
+  margin: 0 0 32px;
+  letter-spacing: -0.02em;
+}
+
+.heroTitle em {
+  font-style: italic;
+  color: var(--morado-dark);
+  opacity: 0.75;
+}
+
+.heroSub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 400px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ════════════════════════
+   SECCIONES GENÉRICAS
+════════════════════════ */
+.section {
+  position: relative;
+  border-top: 1px solid var(--border);
+  padding: 80px 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* flor decorativa de sección */
+.sectionFlor {
+  position: absolute;
+  top: 48px;
+  right: 24px;
+  font-size: 7rem;
+  color: var(--morado);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(20deg);
+  line-height: 1;
+}
+
+.sectionInner {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.stickyLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 100px;
+}
+
+.stickyNum {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--verde);
+}
+
+.stickyName {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--morado);
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.bigText {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.bodyText {
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: rgba(50, 34, 58, 0.7);
+  margin: 0;
+}
+
+.bodyText em {
+  font-style: italic;
+  color: var(--morado);
+}
+
+/* ════════════════════════
+   VALORES
+════════════════════════ */
+.valoresSection {
+  position: relative;
+  background: var(--morado-soft);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 32px;
+  overflow: hidden;
+}
+
+/* flores de fondo absolutas */
+.valoresBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.valoresBg span {
+  position: absolute;
+  line-height: 1;
+}
+
+.valoresWrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.valoresHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 44px;
+}
+
+.sectionNum {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--verde);
+}
+
+.sectionTitle {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--morado);
+  margin: 0;
+}
+
+.valoresList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.valorItem {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.valorItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(125, 101, 134, 0.1);
+}
+
+.valorFlor {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.valorPalabra {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--morado);
+  line-height: 1.1;
+}
+
+.valorDesc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ════════════════════════
+   MISIÓN Y VISIÓN
+════════════════════════ */
+.mvSection {
+  position: relative;
+  padding: 80px 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.mvFloresLeft,
+.mvFloresRight {
+  position: absolute;
+  font-size: 10rem;
+  color: var(--verde);
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.mvFloresLeft {
+  top: 20px;
+  left: -24px;
+  transform: rotate(-25deg);
+}
+
+.mvFloresRight {
+  bottom: 20px;
+  right: -24px;
+  transform: rotate(15deg);
+}
+
+.mvGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.mvCard {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.25s ease;
+}
+
+.mvCard:hover { transform: translateY(-3px); }
+
+.mvFlor {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.mvNum {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--verde);
+}
+
+.mvTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--morado);
+  margin: 0;
+}
+
+.mvText {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: rgba(50, 34, 58, 0.68);
+  margin: 0;
+}
+
+/* ════════════════════════
+   RESPONSIVE
+════════════════════════ */
+@media (max-width: 768px) {
+  .valoresList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 28px 20px 72px;
+    min-height: 40vh;
+  }
+
+  .heroInner { padding-top: 40px; }
+
+  .section {
+    padding: 56px 20px;
+  }
+
+  .sectionInner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stickyLabel {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    position: static;
+  }
+
+  .sectionFlor { font-size: 4rem; }
+
+  .valoresSection { padding: 56px 20px; }
+
+  .valoresList {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .valorItem { padding: 18px 16px; }
+
+  .mvSection { padding: 56px 20px; }
+
+  .mvGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .mvCard { padding: 28px 24px; }
+
+  .mvFloresLeft,
+  .mvFloresRight { font-size: 6rem; }
+
+  .scrollHint { left: 20px; }
+}
