@@ -1,25 +1,3 @@
-/* ═══════════════════════════════════════════════════════
-   RECICLADO de sobre-nosotros-v2.module.css:
-     - Variables (.page)
-     - .reveal / .visible
-     - @keyframes float
-     - .heroFlores / .floatingFlor
-     - .heroEyebrow / .heroSub
-     - .scrollHint / .scrollLine / .scrollLabel
-     - @keyframes scrollPulse
-     - .breadcrumb y variantes
-   PROPIO de contactanos.module.css (original):
-     - .hero (padding ajustado a min-height)
-     - .heroTitle (tamaño diferente)
-     - .heroInner
-     - .content / .grid
-     - .mapWrap / .infoCard
-     - .contactItem y variantes
-     - .iconBox / .contactText / .contactLabel / .contactValue
-     - .arrow / .divider
-═══════════════════════════════════════════════════════ */
-
-/* ── VARIABLES ── RECICLADO */
 .page {
     --verde: rgb(194, 212, 158);
     --morado: rgb(125, 101, 134);
@@ -54,7 +32,6 @@
     line-height: 1;
 }
 
-/* ── BREADCRUMB ── RECICLADO */
 .breadcrumb {
     display: flex;
     align-items: center;
@@ -71,7 +48,7 @@
 }
 
 .breadcrumbLink:hover {
-    opacity: 0.65;
+  text-decoration: underline;
 }
 
 .breadcrumbSep {
@@ -84,10 +61,8 @@
     color: var(--text-muted);
 }
 
-/* ── HERO ── PROPIO (min-height de contacto, no de sobre-nosotros) */
 .hero {
     position: relative;
-    min-height: 10vh;
     display: flex;
     flex-direction: column;
     padding: 40px 32px 80px;
@@ -96,7 +71,6 @@
     overflow: hidden;
 }
 
-/* ── HERO INNER ── PROPIO */
 .heroInner {
     position: relative;
     z-index: 1;
@@ -105,17 +79,6 @@
     max-width: 520px;
 }
 
-/* ── HERO EYEBROW ── RECICLADO */
-.heroEyebrow {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--verde);
-    margin: 0 0 16px;
-}
-
-/* ── HERO TITLE ── PROPIO (más compacto que sobre-nosotros) */
 .heroTitle {
     font-family: 'Playfair Display', serif;
     font-size: clamp(3rem, 10vw, 6rem);
@@ -126,23 +89,18 @@
     letter-spacing: -0.02em;
 }
 
-/* ── HERO SUB ── RECICLADO */
 .heroSub {
     font-size: 1rem;
     color: var(--text-muted);
     max-width: 400px;
-    line-height: 1.75;
     margin: 0;
 }
 
-/* ── CONTENIDO ── PROPIO */
 .content {
-    padding: 0 32px 80px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-/* ── GRID ── PROPIO */
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -150,12 +108,11 @@
     align-items: start;
 }
 
-/* ── MAPA ── PROPIO */
 .mapWrap {
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--border);
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4/3;
     position: relative;
     background: #e8e4f0;
 }
@@ -169,7 +126,6 @@
     display: block;
 }
 
-/* ── TARJETA INFO ── PROPIO */
 .infoCard {
     background: var(--white);
     border-radius: var(--radius);
@@ -177,12 +133,11 @@
     overflow: hidden;
 }
 
-/* ── CONTACT ITEM ── PROPIO */
 .contactItem {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 18px 20px;
+    padding: 15px 20px;
     text-decoration: none;
     color: var(--text);
     transition: background 0.2s ease;
@@ -297,9 +252,5 @@
 
     .arrow {
         display: none;
-    }
-
-    .scrollHint {
-        left: 20px;
     }
 }

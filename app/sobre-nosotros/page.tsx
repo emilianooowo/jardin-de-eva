@@ -75,7 +75,7 @@ export default function SobreNosotrosV2() {
     return (
         <main className={styles.page}>
             {/* 2. Inyección de Meta-etiquetas y Script JSON-LD */}
-            <title>Nuestra Historia | Jardín de Eva Florería</title>
+            <title>Nuestra Historia | Jardín de Eva</title>
             <meta name="description" content="Conoce la historia de Jardín de Eva, tu florería y café express. Descubre nuestros valores, misión y visión." />
             <Script
                 id="schema-about-page"
@@ -172,10 +172,10 @@ export default function SobreNosotrosV2() {
             <section className={styles.valoresSection}>
                 {/* flores de fondo decorativas */}
                 <div className={styles.valoresBg} aria-hidden="true">
-                    <span style={{ top: '10%', left: '5%', fontSize: '6rem', opacity: 0.06, transform: 'rotate(-20deg)' }}>✿</span>
+                    <span style={{ top: '6%', left: '30%', fontSize: '6rem', opacity: 0.06, transform: 'rotate(-20deg)' }}>✿</span>
                     <span style={{ top: '60%', left: '2%', fontSize: '4rem', opacity: 0.05, transform: 'rotate(10deg)' }}>✾</span>
                     <span style={{ top: '20%', right: '4%', fontSize: '5rem', opacity: 0.06, transform: 'rotate(25deg)' }}>✿</span>
-                    <span style={{ bottom: '8%', right: '8%', fontSize: '7rem', opacity: 0.04, transform: 'rotate(-5deg)' }}>✾</span>
+                    <span style={{ bottom: '2%', right: '8%', fontSize: '7rem', opacity: 0.04, transform: 'rotate(-5deg)' }}>✾</span>
                 </div>
 
                 <div className={styles.valoresWrap}>

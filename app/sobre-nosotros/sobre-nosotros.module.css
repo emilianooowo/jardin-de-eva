@@ -19,6 +19,38 @@
 }
 
 /* ════════════════════════
+   SCROLL REVEAL (Añadido de vuelta)
+════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════
+   ANIMACIÓN FLOTANTE FLORES (Añadido de vuelta)
+════════════════════════ */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: rotate(var(--rot, 0deg)) translateY(0px);
+  }
+
+  50% {
+    transform: rotate(var(--rot, 0deg)) translateY(-14px);
+  }
+}
+
+/* ════════════════════════
    BREADCRUMB
 ════════════════════════ */
 .breadcrumb {
@@ -38,7 +70,7 @@
 }
 
 .breadcrumbLink:hover {
-  opacity: 0.65;
+  text-decoration: underline;
 }
 
 .breadcrumbSep {
@@ -56,7 +88,6 @@
 ════════════════════════ */
 .hero {
   position: relative;
-  min-height: 10vh;
   display: flex;
   flex-direction: column;
   padding: 40px 32px 80px;
@@ -232,10 +263,10 @@
 }
 
 .sectionNum {
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: 500;
   letter-spacing: 0.16em;
-  color: var(--verde);
+  color: rgb(194, 212, 158, 0.5);
 }
 
 .sectionTitle {
@@ -286,9 +317,6 @@
   line-height: 1.55;
 }
 
-/* ════════════════════════
-   MISIÓN Y VISIÓN
-════════════════════════ */
 .mvSection {
   position: relative;
   padding: 80px 32px;
@@ -345,10 +373,10 @@
 }
 
 .mvNum {
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: 500;
   letter-spacing: 0.16em;
-  color: var(--verde);
+  color: rgb(194, 212, 158, 0.5);
 }
 
 .mvTitle {
@@ -366,9 +394,6 @@
   margin: 0;
 }
 
-/* ════════════════════════
-   RESPONSIVE
-════════════════════════ */
 @media (max-width: 768px) {
   .valoresList {
     grid-template-columns: repeat(2, 1fr);
@@ -434,9 +459,5 @@
   .mvFloresLeft,
   .mvFloresRight {
     font-size: 6rem;
-  }
-
-  .scrollHint {
-    left: 20px;
   }
 }

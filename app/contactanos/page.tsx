@@ -112,11 +112,6 @@ export default function Contacto() {
                         Escríbenos, llámanos o visítanos en nuestra tienda.
                     </p>
                 </div>
-
-                <div className={styles.scrollHint} aria-hidden="true">
-                    <span className={styles.scrollLine} />
-                    <span className={styles.scrollLabel}>Scroll</span>
-                </div>
             </section>
 
             {/* ══ CONTENIDO ══ */}

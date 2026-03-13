@@ -65,7 +65,7 @@ export default function Header() {
                     </button>
 
                     <Link href="/" className={styles.logo}>
-                        <img src="je.png" alt="Jardín de Eva" />
+                        <img src="logos/je.png" alt="Jardín de Eva" />
                     </Link>
                 </div>
 

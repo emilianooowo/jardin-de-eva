@@ -59,18 +59,10 @@ export default function Footer() {
 
                 <div className={styles.brand}>
                     <Link href="/" className={styles.logo}>
-                        <img src="jdv.png" alt="" />
+                        <img src="logos/jdv.png" alt="" />
                     </Link>
                     <p className={styles.tagline}>Donde las flores y el café florecen juntos.</p>
                 </div>
-
-                <nav className={styles.floresNav}>
-                    {floresNav.map(({ label, href }) => (
-                        <Link key={href} href={href} className={styles.floresLink}>
-                            {label}
-                        </Link>
-                    ))}
-                </nav>
 
                 <div className={styles.socialRow}>
                     {socialLinks.map(({ label, href, path }) => (
@@ -86,6 +78,14 @@ export default function Footer() {
                         </a>
                     ))}
                 </div>
+
+                <nav className={styles.floresNav}>
+                    {floresNav.map(({ label, href }) => (
+                        <Link key={href} href={href} className={styles.floresLink}>
+                            {label}
+                        </Link>
+                    ))}
+                </nav>
 
             </div>
         </footer>
