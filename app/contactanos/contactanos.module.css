@@ -1,4 +1,25 @@
-/* ── VARIABLES ── */
+/* ═══════════════════════════════════════════════════════
+   RECICLADO de sobre-nosotros-v2.module.css:
+     - Variables (.page)
+     - .reveal / .visible
+     - @keyframes float
+     - .heroFlores / .floatingFlor
+     - .heroEyebrow / .heroSub
+     - .scrollHint / .scrollLine / .scrollLabel
+     - @keyframes scrollPulse
+     - .breadcrumb y variantes
+   PROPIO de contactanos.module.css (original):
+     - .hero (padding ajustado a min-height)
+     - .heroTitle (tamaño diferente)
+     - .heroInner
+     - .content / .grid
+     - .mapWrap / .infoCard
+     - .contactItem y variantes
+     - .iconBox / .contactText / .contactLabel / .contactValue
+     - .arrow / .divider
+═══════════════════════════════════════════════════════ */
+
+/* ── VARIABLES ── RECICLADO */
 .page {
     --verde: rgb(194, 212, 158);
     --morado: rgb(125, 101, 134);
@@ -14,21 +35,31 @@
     min-height: 100vh;
     background: var(--bg);
     font-family: 'Jost', sans-serif;
+    overflow-x: hidden;
 }
 
-/* ── HERO ── */
-.hero {
-    padding: 48px 24px 40px;
-    max-width: 860px;
-    margin: 0 auto;
+.heroFlores {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform;
 }
 
-/* breadcrumb */
+.floatingFlor {
+    position: absolute;
+    animation: float var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+    color: var(--morado);
+    opacity: 0.17;
+    line-height: 1;
+}
+
+/* ── BREADCRUMB ── RECICLADO */
 .breadcrumb {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .breadcrumbLink {
@@ -40,47 +71,78 @@
 }
 
 .breadcrumbLink:hover {
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 .breadcrumbSep {
     font-size: 0.9rem;
     color: var(--verde);
-    line-height: 1;
-    margin-top: 1px;
 }
 
 .breadcrumbCurrent {
     font-size: 0.8rem;
     color: var(--text-muted);
-    letter-spacing: 0.03em;
 }
 
-/* título */
+/* ── HERO ── PROPIO (min-height de contacto, no de sobre-nosotros) */
+.hero {
+    position: relative;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 32px 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* ── HERO INNER ── PROPIO */
+.heroInner {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding-top: 32px;
+    max-width: 520px;
+}
+
+/* ── HERO EYEBROW ── RECICLADO */
+.heroEyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin: 0 0 16px;
+}
+
+/* ── HERO TITLE ── PROPIO (más compacto que sobre-nosotros) */
 .heroTitle {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(3rem, 10vw, 6rem);
     font-weight: 700;
     color: var(--morado);
-    line-height: 1.15;
-    margin: 0 0 10px;
+    line-height: 1;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
 }
 
+/* ── HERO SUB ── RECICLADO */
 .heroSub {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-muted);
+    max-width: 400px;
+    line-height: 1.75;
     margin: 0;
-    line-height: 1.6;
 }
 
-/* ── CONTENIDO ── */
+/* ── CONTENIDO ── PROPIO */
 .content {
-    padding: 0 24px 80px;
-    max-width: 860px;
+    padding: 0 32px 80px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-/* ── GRID: mapa + info ── */
+/* ── GRID ── PROPIO */
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -88,7 +150,7 @@
     align-items: start;
 }
 
-/* ── MAPA ── */
+/* ── MAPA ── PROPIO */
 .mapWrap {
     border-radius: var(--radius);
     overflow: hidden;
@@ -107,7 +169,7 @@
     display: block;
 }
 
-/* ── TARJETA INFO ── */
+/* ── TARJETA INFO ── PROPIO */
 .infoCard {
     background: var(--white);
     border-radius: var(--radius);
@@ -115,7 +177,7 @@
     overflow: hidden;
 }
 
-/* ── ITEM DE CONTACTO ── */
+/* ── CONTACT ITEM ── PROPIO */
 .contactItem {
     display: flex;
     align-items: center;
@@ -127,21 +189,21 @@
     position: relative;
 }
 
-a.contactItem:hover {
+.contactItem:hover {
     background: var(--morado-soft);
 }
 
-a.contactItem:hover .iconBox {
+.contactItem:hover .iconBox {
     background: var(--verde);
     color: var(--morado-dark);
 }
 
-a.contactItem:hover .arrow {
+.contactItem:hover .arrow {
     opacity: 1;
     transform: translateX(2px);
 }
 
-/* icono */
+/* ── ICON BOX ── PROPIO */
 .iconBox {
     width: 40px;
     height: 40px;
@@ -160,7 +222,7 @@ a.contactItem:hover .arrow {
     height: 18px;
 }
 
-/* texto */
+/* ── CONTACT TEXT ── PROPIO */
 .contactText {
     flex: 1;
     display: flex;
@@ -187,7 +249,7 @@ a.contactItem:hover .arrow {
     text-overflow: ellipsis;
 }
 
-/* flecha */
+/* ── ARROW ── PROPIO */
 .arrow {
     font-size: 1.1rem;
     color: var(--morado);
@@ -196,7 +258,7 @@ a.contactItem:hover .arrow {
     flex-shrink: 0;
 }
 
-/* divisor */
+/* ── DIVIDER ── PROPIO */
 .divider {
     height: 1px;
     background: var(--border);
@@ -206,11 +268,12 @@ a.contactItem:hover .arrow {
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
     .hero {
-        padding: 32px 20px 28px;
+        padding: 28px 20px 72px;
+        min-height: 50vh;
     }
 
     .heroTitle {
-        font-size: 1.8rem;
+        font-size: clamp(2.2rem, 12vw, 3.5rem);
     }
 
     .content {
@@ -222,7 +285,6 @@ a.contactItem:hover .arrow {
         gap: 16px;
     }
 
-    /* en mobile el mapa va arriba en formato 16/9 */
     .mapWrap {
         aspect-ratio: 16 / 9;
     }
@@ -235,5 +297,9 @@ a.contactItem:hover .arrow {
 
     .arrow {
         display: none;
+    }
+
+    .scrollHint {
+        left: 20px;
     }
 }

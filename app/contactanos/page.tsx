@@ -1,59 +1,128 @@
-import type { Metadata } from "next";
-import Script from "next/script";
-import Link from "next/link";
-import styles from "./contactanos.module.css";
+'use client'
 
-export const metadata: Metadata = {
-    title: "Contáctanos | Jardín de Eva",
-    description: "Visítanos en Residencial La Hacienda, Tuxtla Gutiérrez. Contáctanos por WhatsApp, correo o Instagram.",
-};
+import { useEffect, useRef } from 'react'
+import Script from 'next/script'
+import Link from 'next/link'
+import styles from './contactanos.module.css'
+
+// ¡ELIMINADO el export const metadata de aquí para que no de error!
 
 const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "Florist",
-    "name": "Jardín de Eva",
-    "telephone": "+529613706653",
-    "email": "jardindeeva19@gmail.com",
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Mérida entre Taxco y Guanajuato 380B, Residencial La Hacienda",
-        "addressLocality": "Tuxtla Gutiérrez",
-        "addressRegion": "Chiapas",
-        "postalCode": "29030",
-        "addressCountry": "MX",
+    '@context': 'https://schema.org',
+    '@type': 'Florist',
+    name: 'Jardín de Eva',
+    telephone: '+529613706653',
+    email: 'jardindeeva19@gmail.com',
+    address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Av. Mérida entre Taxco y Guanajuato 380B, Residencial La Hacienda',
+        addressLocality: 'Tuxtla Gutiérrez',
+        addressRegion: 'Chiapas',
+        postalCode: '29030',
+        addressCountry: 'MX',
     },
-    "url": "#",
-};
+    url: 'https://jardindeeva.com.mx/contactanos', // Cambia esto por tu dominio real
+}
+
+/* ── Flores flotantes del hero (posiciones fijas para SSR seguro) ── */
+const heroFlores = [
+    { glyph: '✿', top: '14%', left: '68%', size: '4.5rem', rot: '18deg', delay: '0s', dur: '6s' },
+    { glyph: '✾', top: '35%', left: '82%', size: '3rem', rot: '-14deg', delay: '1s', dur: '7.5s' },
+    { glyph: '✾', top: '58%', left: '75%', size: '2.5rem', rot: '6deg', delay: '0.5s', dur: '8s' },
+    { glyph: '✿', top: '72%', left: '88%', size: '2rem', rot: '-28deg', delay: '1.5s', dur: '5.5s' },
+    { glyph: '✾', top: '10%', left: '57%', size: '2.2rem', rot: '32deg', delay: '2s', dur: '9s' },
+    { glyph: '✿', top: '82%', left: '65%', size: '3.2rem', rot: '-8deg', delay: '0.8s', dur: '7s' },
+
+]
 
 export default function Contacto() {
+    const parallaxRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const reveals = document.querySelectorAll(`.${styles.reveal}`)
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.visible)
+                        observer.unobserve(entry.target)
+                    }
+                })
+            },
+            { threshold: 0.1 }
+        )
+        reveals.forEach((el) => observer.observe(el))
+
+        const handleScroll = () => {
+            if (!parallaxRef.current) return
+            parallaxRef.current.style.transform = `translateY(${window.scrollY * 0.22}px)`
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true })
+
+        return () => {
+            observer.disconnect()
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     return (
         <main className={styles.page}>
+            {/* ── INYECCIÓN SEO ON-PAGE (AQUÍ ESTÁ LA MAGIA) ── */}
+            <title>Contáctanos | Jardín de Eva</title>
+            <meta name="description" content="Visítanos en Residencial La Hacienda, Tuxtla Gutiérrez. Contáctanos por WhatsApp, correo o Instagram." />
+
             <Script
                 id="schema-local-business"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
             />
 
-            {/* ── HERO ── */}
+            {/* ══ HERO ══ */}
             <section className={styles.hero}>
-                {/* breadcrumb */}
+                <div className={styles.heroFlores} ref={parallaxRef} aria-hidden="true">
+                    {heroFlores.map((f, i) => (
+                        <span
+                            key={i}
+                            className={styles.floatingFlor}
+                            style={{
+                                top: f.top,
+                                left: f.left,
+                                fontSize: f.size,
+                                '--rot': f.rot,
+                                '--dur': f.dur,
+                                '--delay': f.delay,
+                            } as React.CSSProperties}
+                        >
+                            {f.glyph}
+                        </span>
+                    ))}
+                </div>
+
                 <nav className={styles.breadcrumb} aria-label="Navegación">
                     <Link href="/" className={styles.breadcrumbLink}>Inicio</Link>
                     <span className={styles.breadcrumbSep} aria-hidden="true">›</span>
                     <span className={styles.breadcrumbCurrent}>Contáctanos</span>
                 </nav>
 
-                <h1 className={styles.heroTitle}>Contáctanos</h1>
-                <p className={styles.heroSub}>
-                    Escríbenos, llámanos o visítanos en nuestra tienda.
-                </p>
+                <div className={styles.heroInner}>
+                    <h1 className={`${styles.heroTitle} ${styles.reveal}`} style={{ '--delay': '80ms' } as React.CSSProperties}>
+                        Contáctanos
+                    </h1>
+                    <p className={`${styles.heroSub} ${styles.reveal}`} style={{ '--delay': '160ms' } as React.CSSProperties}>
+                        Escríbenos, llámanos o visítanos en nuestra tienda.
+                    </p>
+                </div>
+
+                <div className={styles.scrollHint} aria-hidden="true">
+                    <span className={styles.scrollLine} />
+                    <span className={styles.scrollLabel}>Scroll</span>
+                </div>
             </section>
 
-            {/* ── CONTENIDO ── */}
-            <section className={styles.content}>
+            {/* ══ CONTENIDO ══ */}
+            <section className={`${styles.content} ${styles.reveal}`} style={{ '--delay': '80ms' } as React.CSSProperties}>
                 <div className={styles.grid}>
 
-                    {/* MAPA */}
                     <div className={styles.mapWrap}>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d8196.961541373024!2d-93.1406521203248!3d16.762651496656897!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDQ1JzQ4LjYiTiA5M8KwMDgnMDMuOSJX!5e0!3m2!1sen!2smx!4v1773353813174!5m2!1sen!2smx"
@@ -63,10 +132,9 @@ export default function Contacto() {
                             referrerPolicy="no-referrer-when-downgrade"
                         />
                     </div>
-                    {/* INFO */}
-                    <div className={styles.infoCard}>
 
-                        <a href="tel:+529613706653" target="_blank" rel="noopener noreferrer" className={styles.contactItem}>
+                    <div className={styles.infoCard}>
+                        <a href="tel:+529613706653" className={styles.contactItem}>
                             <span className={styles.iconBox}>
                                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.85 21 3 13.15 3 4a1 1 0 011-1h3.49a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.19 2.2z" />
@@ -127,10 +195,7 @@ export default function Contacto() {
 
                         <div className={styles.divider} />
 
-                        <a href="https://maps.app.goo.gl/g1XbtHXE8YShNCtk9"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.contactItem}>
+                        <a href="https://maps.app.goo.gl/g1XbtHXE8YShNCtk9" target="_blank" rel="noopener noreferrer" className={styles.contactItem}>
                             <span className={styles.iconBox}>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -151,5 +216,5 @@ export default function Contacto() {
                 </div>
             </section>
         </main>
-    );
+    )
 }

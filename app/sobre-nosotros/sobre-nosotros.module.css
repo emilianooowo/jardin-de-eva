@@ -1,46 +1,21 @@
 /* ── VARIABLES ── */
 .page {
-  --verde:       rgb(194, 212, 158);
-  --morado:      rgb(125, 101, 134);
+  --verde: rgb(194, 212, 158);
+  --morado: rgb(125, 101, 134);
   --morado-dark: rgb(100, 78, 108);
   --morado-soft: rgba(125, 101, 134, 0.06);
-  --verde-soft:  rgba(194, 212, 158, 0.15);
-  --text:        rgb(50, 34, 58);
-  --text-muted:  rgba(50, 34, 58, 0.5);
-  --border:      rgba(125, 101, 134, 0.12);
-  --bg:          #fdfbf7;
-  --white:       #ffffff;
+  --verde-soft: rgba(194, 212, 158, 0.15);
+  --text: rgb(50, 34, 58);
+  --text-muted: rgba(50, 34, 58, 0.5);
+  --border: rgba(125, 101, 134, 0.12);
+  --bg: #fdfbf7;
+  --white: #ffffff;
 
   min-height: 100vh;
   background: var(--bg);
   font-family: 'Jost', sans-serif;
   color: var(--text);
   overflow-x: hidden;
-}
-
-/* ════════════════════════
-   SCROLL REVEAL
-════════════════════════ */
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--delay, 0ms);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ════════════════════════
-   ANIMACIÓN FLOTANTE FLORES
-════════════════════════ */
-@keyframes float {
-  0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0px); }
-  50%       { transform: rotate(var(--rot, 0deg)) translateY(-14px); }
 }
 
 /* ════════════════════════
@@ -62,7 +37,9 @@
   transition: opacity 0.2s;
 }
 
-.breadcrumbLink:hover { opacity: 0.65; }
+.breadcrumbLink:hover {
+  opacity: 0.65;
+}
 
 .breadcrumbSep {
   font-size: 0.9rem;
@@ -79,7 +56,7 @@
 ════════════════════════ */
 .hero {
   position: relative;
-  min-height: 50vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   padding: 40px 32px 80px;
@@ -114,15 +91,6 @@
   max-width: 560px;
 }
 
-.heroEyebrow {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--verde);
-  margin: 0 0 20px;
-}
-
 .heroTitle {
   font-family: 'Playfair Display', serif;
   font-size: clamp(4rem, 13vw, 8rem);
@@ -131,12 +99,6 @@
   line-height: 0.9;
   margin: 0 0 32px;
   letter-spacing: -0.02em;
-}
-
-.heroTitle em {
-  font-style: italic;
-  color: var(--morado-dark);
-  opacity: 0.75;
 }
 
 .heroSub {
@@ -189,7 +151,7 @@
 }
 
 .stickyNum {
-  font-size: 0.68rem;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   color: var(--verde);
@@ -270,7 +232,7 @@
 }
 
 .sectionNum {
-  font-size: 0.68rem;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   color: var(--verde);
@@ -302,12 +264,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.valorItem:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(125, 101, 134, 0.1);
 }
 
 .valorFlor {
@@ -380,10 +336,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: transform 0.25s ease;
 }
-
-.mvCard:hover { transform: translateY(-3px); }
 
 .mvFlor {
   font-size: 2rem;
@@ -392,7 +345,7 @@
 }
 
 .mvNum {
-  font-size: 0.68rem;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   color: var(--verde);
@@ -428,7 +381,9 @@
     min-height: 40vh;
   }
 
-  .heroInner { padding-top: 40px; }
+  .heroInner {
+    padding-top: 40px;
+  }
 
   .section {
     padding: 56px 20px;
@@ -446,28 +401,42 @@
     position: static;
   }
 
-  .sectionFlor { font-size: 4rem; }
+  .sectionFlor {
+    font-size: 4rem;
+  }
 
-  .valoresSection { padding: 56px 20px; }
+  .valoresSection {
+    padding: 56px 20px;
+  }
 
   .valoresList {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
 
-  .valorItem { padding: 18px 16px; }
+  .valorItem {
+    padding: 18px 16px;
+  }
 
-  .mvSection { padding: 56px 20px; }
+  .mvSection {
+    padding: 56px 20px;
+  }
 
   .mvGrid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
-  .mvCard { padding: 28px 24px; }
+  .mvCard {
+    padding: 28px 24px;
+  }
 
   .mvFloresLeft,
-  .mvFloresRight { font-size: 6rem; }
+  .mvFloresRight {
+    font-size: 6rem;
+  }
 
-  .scrollHint { left: 20px; }
+  .scrollHint {
+    left: 20px;
+  }
 }

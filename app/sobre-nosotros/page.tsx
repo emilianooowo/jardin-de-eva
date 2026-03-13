@@ -16,7 +16,6 @@ const valores = [
     { palabra: 'Calidad', desc: 'Garantizamos un resultado impecable.', flor: '/flores-valores/flor-8.svg' },
 ]
 
-// Flores flotantes del hero — posición fija para SSR seguro
 const heroFlores = [
     { glyph: '✿', top: '12%', left: '72%', size: '5rem', rot: '20deg', delay: '0s', dur: '6s' },
     { glyph: '✾', top: '30%', left: '85%', size: '3rem', rot: '-15deg', delay: '1s', dur: '7s' },
@@ -46,7 +45,6 @@ export default function SobreNosotrosV2() {
     };
 
     useEffect(() => {
-        // Scroll reveal
         const reveals = document.querySelectorAll(`.${styles.reveal}`)
         const observer = new IntersectionObserver(
             (entries) => {
@@ -61,7 +59,6 @@ export default function SobreNosotrosV2() {
         )
         reveals.forEach((el) => observer.observe(el))
 
-        // Parallax suave en flores del hero
         const handleScroll = () => {
             if (!parallaxRef.current) return
             const y = window.scrollY
@@ -115,9 +112,8 @@ export default function SobreNosotrosV2() {
                 </div>
 
                 <div className={styles.heroInner}>
-                    <p className={`${styles.heroEyebrow} ${styles.reveal}`}>Nuestra historia</p>
                     <h1 className={`${styles.heroTitle} ${styles.reveal}`} style={{ '--delay': '80ms' } as React.CSSProperties}>
-                        Jardín<br /><em>de Eva</em>
+                        Nuestra <br /> Historia
                     </h1>
                     <p className={`${styles.heroSub} ${styles.reveal}`} style={{ '--delay': '160ms' } as React.CSSProperties}>
                         Una marca de diseño floral y café express, creada para acompañar

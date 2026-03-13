@@ -12,7 +12,7 @@ const socialLinks = [
     },
     {
         label: 'Facebook',
-        href: 'https://www.facebook.com/profile.php?id=61585013472323&__cft__[0]=AZb__QKUIGDTa-HCZ0oSY_j_5USMPvSGfsKveuomM7Y3eqwT2e-RAgpNmbtg-OyGXaZkHBSaQ6OU69ZQX8hdgiXtjQhlj5ZmzKp_ebgt_WCDI_2ntfphCdo4WSoJ8kbvm_KPITWRVTc99dm56sa-M0QH44YJvVd6kgsMsMBZ3IEoHYSVSytG-OCc-nl1qS7YqKUUXnR_rxhXJ9EByY1FVCDy&__tn__=-UC%2CP-R',
+        href: 'https://www.facebook.com/profile.php?id=61585013472323',
         path: 'M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.791-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.874v2.276h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z'
     },
     {
@@ -51,20 +51,34 @@ export default function Header() {
         <>
             {/* ── HEADER ── */}
             <header className={styles.header}>
-                <button
-                    className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
-                    onClick={() => setMenuOpen(prev => !prev)}
-                    aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-                    aria-expanded={menuOpen}
-                >
-                    <span />
-                    <span />
-                    <span />
-                </button>
+                {/* Lado Izquierdo: Hamburguesa + Logo */}
+                <div className={styles.leftSection}>
+                    <button
+                        className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
+                        onClick={() => setMenuOpen(prev => !prev)}
+                        aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+                        aria-expanded={menuOpen}
+                    >
+                        <span />
+                        <span />
+                        <span />
+                    </button>
 
-                <Link href="/" className={styles.logo}>
-                    <img src="jdv-logo.png" alt="" />
-                </Link>
+                    <Link href="/" className={styles.logo}>
+                        <img src="je.png" alt="Jardín de Eva" />
+                    </Link>
+                </div>
+
+                {/* Lado Derecho: Iconos Sociales */}
+                <div className={styles.socialBar}>
+                    {socialLinks.map(({ label, href, path }) => (
+                        <a key={label} href={href} className={styles.socialLink} aria-label={label}>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d={path} />
+                            </svg>
+                        </a>
+                    ))}
+                </div>
             </header>
 
             <div
@@ -78,30 +92,16 @@ export default function Header() {
                     <Link href="/" className={styles.navItem} onClick={closeMenu}>
                         Inicio
                     </Link>
-
                     <Link href="/sobre-nosotros" className={styles.navItem} onClick={closeMenu}>
                         Sobre Nosotros
                     </Link>
-
                     <Link href="/flores" className={styles.navItem} onClick={closeMenu}>
                         Flores
                     </Link>
-
                     <Link href="/contactanos" className={styles.navItem} onClick={closeMenu}>
                         Contáctanos
                     </Link>
                 </nav>
-
-                {/* ── REDES SOCIALES ── */}
-                <div className={styles.socialBar}>
-                    {socialLinks.map(({ label, href, path }) => (
-                        <a key={label} href={href} className={styles.socialLink} aria-label={label}>
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d={path} />
-                            </svg>
-                        </a>
-                    ))}
-                </div>
             </aside>
         </>
     )

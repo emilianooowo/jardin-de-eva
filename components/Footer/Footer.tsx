@@ -57,15 +57,13 @@ export default function Footer() {
         <footer className={styles.footer}>
             <div className={styles.inner}>
 
-                {/* ── LOGO + ESLOGAN ── */}
                 <div className={styles.brand}>
                     <Link href="/" className={styles.logo}>
-                        <img src="je.png" alt="" />
+                        <img src="jdv.png" alt="" />
                     </Link>
                     <p className={styles.tagline}>Donde las flores y el café florecen juntos.</p>
                 </div>
 
-                {/* ── FLORES NAV HORIZONTAL ── */}
                 <nav className={styles.floresNav}>
                     {floresNav.map(({ label, href }) => (
                         <Link key={href} href={href} className={styles.floresLink}>
@@ -74,7 +72,6 @@ export default function Footer() {
                     ))}
                 </nav>
 
-                {/* ── REDES HORIZONTALES ── */}
                 <div className={styles.socialRow}>
                     {socialLinks.map(({ label, href, path }) => (
                         <a key={label} href={href} className={styles.socialItem} aria-label={label}>
