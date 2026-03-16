@@ -116,7 +116,7 @@
     z-index: 0;
 }
 
-.navItem:hover{
+.navItem:hover {
     opacity: .6;
 }
 
@@ -166,4 +166,14 @@
     width: 14px;
     height: 14px;
     fill: currentColor;
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        padding: 25% 0 0 0;
+    }
+
+    .navItem {
+        width: fit-content;
+    }
 }

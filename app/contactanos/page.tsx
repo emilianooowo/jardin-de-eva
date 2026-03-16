@@ -55,7 +55,7 @@ export default function Contacto() {
 
         const handleScroll = () => {
             if (!parallaxRef.current) return
-            parallaxRef.current.style.transform = `translateY(${window.scrollY * 0.22}px)`
+            parallaxRef.current.style.transform = `translateY(${window.scrollY * 0.25}px)`
         }
         window.addEventListener('scroll', handleScroll, { passive: true })
 

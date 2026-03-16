@@ -8,7 +8,7 @@
   --text: rgb(50, 34, 58);
   --text-muted: rgba(50, 34, 58, 0.5);
   --border: rgba(125, 101, 134, 0.12);
-  --bg: #fdfbf7;
+  --bg: rgb(255, 255, 255);
   --white: #ffffff;
 
   min-height: 100vh;
@@ -90,7 +90,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 40px 32px 80px;
+  padding: 40px 32px 40px;
   max-width: 1000px;
   margin: 0 auto;
   overflow: hidden;
@@ -126,7 +126,7 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(4rem, 13vw, 8rem);
   font-weight: 700;
-  color: var(--morado);
+  color: var(--verde);
   line-height: 0.9;
   margin: 0 0 32px;
   letter-spacing: -0.02em;

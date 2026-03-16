@@ -32,13 +32,11 @@ const floresNav = [
     { label: 'ASTROMELIA', href: '/flores/ASTROMELIA' },
     { label: 'CAMPANITA', href: '/flores/CAMPANITA' },
     { label: 'CLAVEL', href: '/flores/CLAVEL' },
-
     { label: 'ENCAJE', href: '/flores/ENCAJE' },
     { label: 'GERBERA', href: '/flores/GERBERA' },
     { label: 'GIRASOL', href: '/flores/GIRASOL' },
     { label: 'HORTENSIA', href: '/flores/HORTENSIA' },
     { label: 'LISIANTHUS', href: '/flores/LISIANTHUS' },
-
     { label: 'MATTHIOLA', href: '/flores/MATTHIOLA' },
     { label: 'ROSA', href: '/flores/ROSA' },
     { label: 'CRASPEDIA', href: '/flores/CRASPEDIA' },
